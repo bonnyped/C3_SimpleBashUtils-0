@@ -2,16 +2,18 @@
 #include <stdlib.h>
 #include <getopt.h>
 
-void check_options(int argc, char **argv, int *is_flag);
+struct count {int b, e, n, s, t, E, T;} ;
+
+void check_options(int argc, char **argv);
 void usage(int argc, char *name_of_program);
-// int open_file(int is_flag, char *argv);
+void print_flag_n(char current, char next, int *numbering);
+
+// void print(struct count);
 
 int main(int argc, char **argv) {
-    int is_flag = 2;
-
     usage(argc, argv[0]);
-    check_options(argc, argv, &is_flag);
-    printf("%d\n", is_flag);
+    check_options(argc, argv);
+    
     return 0;
 }
 
@@ -22,9 +24,10 @@ void usage(int argc, char *name_of_program){
         } 
 }
 
-void check_options(int argc, char **argv, int *is_flag) {
-    char c;
-    int flag_of_end = 1;
+void check_options(int argc, char **argv) {
+    struct count flags = {0};
+    char c, current_char, next_char;
+    int number_of_element_of_file = 1, numbering = 1;
     static struct option long_opts[] = {
         {"number-nonblank", 0, 0, 'b'},
         {"number", 0, 0, 'n'},
@@ -33,43 +36,87 @@ void check_options(int argc, char **argv, int *is_flag) {
     };
 
     while(c != -1){     
-        if((c = getopt_long(argc, argv, "+benstvET", long_opts, NULL)) != -1) {           
+        if((c = getopt_long(argc, argv, "+benstET", long_opts, NULL)) != -1) {           
         switch(c) {
             case 'b': 
-                printf("Выбран флаг -b\n"); 
+                flags.b = 'b';
+                number_of_element_of_file = 2; 
                 break;
             case 'e': 
-                printf("Выбран флаг -e\n"); 
+                flags.e = 'e';
+                number_of_element_of_file = 2; 
                 break;
             case 'E': 
-                printf("Выбран флаг -E\n"); 
+                flags.E = 'E';
+                number_of_element_of_file = 2; 
                 break;
             case 'n': 
-                printf("Выбран флаг -n\n"); 
+                flags.n = 'n';
+                number_of_element_of_file = 2; 
                 break;
             case 's': 
-                printf("Выбран флаг -s\n"); 
+                flags.s = 's';
+                number_of_element_of_file = 2; 
                 break;
             case 't': 
-                printf("Выбран флаг -t\n"); 
+                flags.t = 't';
+                number_of_element_of_file = 2; 
                 break;
             case 'T': 
-                printf("Выбран флаг -T\n"); 
-                break;
-            case 'v': 
-                printf("Выбран флаг -v\n"); 
+                flags.T = 'T';
+                number_of_element_of_file = 2; 
                 break;
             }    
-        } else { *is_flag = *is_flag - 1; }
+        } 
     }
+    
+    while(number_of_element_of_file < argc) {
+    FILE *file_to_open;
+    if((file_to_open = fopen(argv[number_of_element_of_file], "r")) == NULL) {
+        printf("Нет такого файла или каталога\n");
+    } else {
+        if ((next_char = fgetc(file_to_open)) != EOF) {
+        int number_of_string_in_opened_file = 1;
+        while((current_char = next_char)!= EOF) {
+            // printf("1%c1\n", current_char); 
+            next_char = fgetc(file_to_open);
+            if (number_of_element_of_file == 1){
+            printf("%c", current_char);
+            current_char = next_char;
+            } else {
+                if(flags.n == 'n') {
+                    if(number_of_string_in_opened_file == 1){
+                        printf("%6d  ", numbering);
+                        numbering++;
+                        number_of_string_in_opened_file++;
+                    }
+                    print_flag_n(current_char, next_char, &numbering); 
+                    current_char = next_char;
+            }
+        }
+        }
+        }
+        fclose(file_to_open);
+    number_of_element_of_file++;
+    } 
+}
+}
+
+void print_flag_n(char current, char next, int *numbering) {
+    if (current == '\n'){
+        if (next != EOF) {
+        printf("%c%6d  ", current, *numbering);
+        *numbering = *numbering + 1;
+        } else {
+            printf("%c", current);
+        }
+        } else {
+            printf("%c", current);
+            }
 }
 
 
-// int open_file(int is_flag, char *argv) {
-//     int num_of_element;
-//     FILE *file_to_open;
-//     if((file_to_open = fopen(argv[is_flag], 'r')) == NULL) {
-//         printf("Невозможно открыть файл\n");
-//     }
+
+// void print_flag_b(struct count) {
+//     printf(" %d  %d  %d  %d  %d  %d  %d ", flags.b, flags.e, flags.n, flags.s, flags.t, flags.E, flags.T);
 // }
-    
