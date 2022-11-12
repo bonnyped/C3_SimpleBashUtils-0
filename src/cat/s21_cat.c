@@ -11,7 +11,6 @@ int main(int argc, char **argv) {
 
     usage(argc, argv[0]);
     check_options(argc, argv, &is_flag);
- 
     printf("%d\n", is_flag);
     return 0;
 }
@@ -33,12 +32,8 @@ void check_options(int argc, char **argv, int *is_flag) {
         {0, 0, 0, 0}
     };
 
-    while(flag_of_end == 1){
-              
-        if((c = getopt_long(argc, argv, "+benstET", long_opts, NULL)) != -1) {
-            flag_of_end = -1;
-            // c = -1;           
-        }
+    while(c != -1){     
+        if((c = getopt_long(argc, argv, "+benstvET", long_opts, NULL)) != -1) {           
         switch(c) {
             case 'b': 
                 printf("Выбран флаг -b\n"); 
@@ -61,8 +56,11 @@ void check_options(int argc, char **argv, int *is_flag) {
             case 'T': 
                 printf("Выбран флаг -T\n"); 
                 break;
-            default:  flag_of_end = -1; *is_flag = *is_flag - 1; break;
-        }
+            case 'v': 
+                printf("Выбран флаг -v\n"); 
+                break;
+            }    
+        } else { *is_flag = *is_flag - 1; }
     }
 }
 
