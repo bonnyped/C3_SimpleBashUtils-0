@@ -1,44 +1,77 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <getopt.h>
 
-void memory_allocation(char *pointer, int *capacity);
+void check_options(int argc, char **argv, int *is_flag);
+void usage(int argc, char *name_of_program);
+// int open_file(int is_flag, char *argv);
 
-int main(int argc, char *argv[]) {
-    char ch, *file_output_data;
-    int capacity = 1000, count = 1;
-    file_output_data = malloc (capacity * sizeof(char));
-    if(!file_output_data){
-        printf("Невозможно выделить память\n");
-        exit(1);
-    }
-    // printf("%s\n", argv[1]);
-    FILE *f;
-    if ((f = fopen(argv[1], "r")) == NULL){
-        printf("Невозможно открыть файл\n");
-        exit(1);
-    } else {
-    while((ch=fgetc(f)) != EOF) {
-    if (count > (capacity / 2)) { memory_allocation(file_output_data, &capacity); }
-    file_output_data[count - 1] = ch;
-    count++;
-    // printf(" ok\n");
-    }
-    }
-    fclose(f);
+int main(int argc, char **argv) {
+    int is_flag = 2;
 
-    for(int i = 0; i < count; i++) {
-        printf("%c", file_output_data[i]);
-    }
-
-free(file_output_data);
-return 0;
+    usage(argc, argv[0]);
+    check_options(argc, argv, &is_flag);
+ 
+    printf("%d\n", is_flag);
+    return 0;
 }
 
-void memory_allocation(char *pointer, int *capacity) {
-    *capacity = *capacity * 2;
-    pointer = realloc(pointer, *capacity);
-    if(!pointer){
-        printf("Невозможно выделить память\n");
+void usage(int argc, char *name_of_program){
+    if(argc == 1){ 
+        printf("Используй флаги и аргументы утилиты\n" );
         exit(1);
+        } 
+}
+
+void check_options(int argc, char **argv, int *is_flag) {
+    char c;
+    int flag_of_end = 1;
+    static struct option long_opts[] = {
+        {"number-nonblank", 0, 0, 'b'},
+        {"number", 0, 0, 'n'},
+        {"squeeze-blank", 0, 0, 's'},
+        {0, 0, 0, 0}
+    };
+
+    while(flag_of_end == 1){
+              
+        if((c = getopt_long(argc, argv, "+benstET", long_opts, NULL)) != -1) {
+            flag_of_end = -1;
+            // c = -1;           
+        }
+        switch(c) {
+            case 'b': 
+                printf("Выбран флаг -b\n"); 
+                break;
+            case 'e': 
+                printf("Выбран флаг -e\n"); 
+                break;
+            case 'E': 
+                printf("Выбран флаг -E\n"); 
+                break;
+            case 'n': 
+                printf("Выбран флаг -n\n"); 
+                break;
+            case 's': 
+                printf("Выбран флаг -s\n"); 
+                break;
+            case 't': 
+                printf("Выбран флаг -t\n"); 
+                break;
+            case 'T': 
+                printf("Выбран флаг -T\n"); 
+                break;
+            default:  flag_of_end = -1; *is_flag = *is_flag - 1; break;
+        }
     }
 }
+
+
+// int open_file(int is_flag, char *argv) {
+//     int num_of_element;
+//     FILE *file_to_open;
+//     if((file_to_open = fopen(argv[is_flag], 'r')) == NULL) {
+//         printf("Невозможно открыть файл\n");
+//     }
+// }
+    
