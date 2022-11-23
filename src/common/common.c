@@ -26,7 +26,7 @@ FILE *open_file(char *file_to_open) {
 // ф-ции для Сat
 
 void check_options_cat(int argc, char **argv, int *number_of_element_of_argv, int *count_of_flags, struct count_cat *flags) {
-    char c;
+    char c = '0';
     struct option long_opts[] = {
     {"number-nonblank", 0, 0, 'b'},
     {"number", 0, 0, 'n'},
@@ -199,3 +199,4 @@ void check_options_grep(int argc, char **argv, struct count_grep *flags) {
         }
     }
 }
+
