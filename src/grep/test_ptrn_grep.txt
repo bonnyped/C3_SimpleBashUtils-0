@@ -1,0 +1,6 @@
+test
+CLEAN
+clean
+while
+^#iclude
+int

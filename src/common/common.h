@@ -1,6 +1,10 @@
 #ifndef COMMON_H
 #define COMMON_H
+#include <getopt.h>
 #include <regex.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #define BUFFSIZE 8000
 
 struct count_cat {
@@ -46,5 +50,16 @@ int counting_capacity(char **argv, int position, int *max_num_strings,
 void print_lines_found(int argc, char **argv, int position,
                        int *max_number_strings, char *buffer, regex_t regexed,
                        struct count_grep *flags);
+void print_if_more_than_one_file(int argc, char **argv, int position,
+                                 int *argv_was_printed,
+                                 struct count_grep *flags);
+void print_l_flag(char **argv, int position, int *flag_for_l,
+                  struct count_grep *flags);
+void print_c_flag(char *line_from_file, struct count_grep *flags, int count,
+                  int i, int *max_number, int *was_printed);
+void print_n_flag(struct count_grep *flags, int iteration);
+// void print_o_flag(char *line, int res_regexec, regex_t regexed,
+// struct count_grep *flags, int iteration);
+void print_matched_line(struct count_grep *flags, char *line_from_file);
 
 #endif
