@@ -192,3 +192,4 @@ void print_flag_v(char current, int no_another_flag) {
     printf("%c%c", '^', (current - 64));
   } else if (no_another_flag == 1)
     printf("%c", current);
+}
