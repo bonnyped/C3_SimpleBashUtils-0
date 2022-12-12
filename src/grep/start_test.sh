@@ -122,19 +122,19 @@
 ./test.sh "-s -c .txt test_1_grep.txt test_ptrn_grep.txt"
 ./test.sh "-c while  test_1_grep.txt test_ptrn_grep.txt"
 ./test.sh "-e while  test_1_grep.txt test_ptrn_grep.txt txt -c"
-# ./test.sh "-o int test_4_grep.txt -n"
-# ./test.sh "-o int test_4_grep.txt -h"
-# ./test.sh "-o int test_4_grep.txt dsd -s"
-# ./test.sh "-o int test_4_grep.txt -l"
-# ./test.sh "-o int test_4_grep.txt -e while -s"
-# ./test.sh "-o int test_4_grep.txt -f test_ptrn_grep.txt"
-# ./test.sh "-o inT test_4_grep.txt -i"
-# ./test.sh "-o int test_4_grep.txt -c"
+./test.sh "-o int test_4_grep.txt -n"
+./test.sh "-o int test_4_grep.txt -h"
+./test.sh "-o int test_4_grep.txt dsd -s"
+./test.sh "-o int test_4_grep.txt -l"
+./test.sh "-o int test_4_grep.txt -e while -s"
+./test.sh "-o int test_4_grep.txt -f test_ptrn_grep.txt"
+./test.sh "-o inT test_4_grep.txt -i"
+./test.sh "-o int test_4_grep.txt -c"
 ./test.sh "-i file.txt test.txt test2.txt"
 ./test.sh "-v file.txt test.txt test2.txt"
 ./test.sh "-c file.txt test.txt test2.txt"
 ./test.sh "-l file.txt test.txt test2.txt"
-# ./test.sh "-o file.txt test.txt test2.txt"
+./test.sh "-o file.txt test.txt test2.txt"
 ./test.sh "-s file.txt test.txt test2.txt"
 ./test.sh "-h file.txt test.txt test2.txt"
 ./test.sh "-n file.txt test.txt test2.txt"
@@ -142,7 +142,7 @@
 ./test.sh "-i -v file.txt test.txt test2.txt"
 ./test.sh "-i -c file.txt test.txt test2.txt"
 ./test.sh "-i -l file.txt test.txt test2.txt"
-# ./test.sh "-i -o file.txt test.txt test2.txt"
+./test.sh "-i -o file.txt test.txt test2.txt"
 ./test.sh "-i -s file.txt test.txt test2.txt"
 ./test.sh "-i -h file.txt test.txt test2.txt"
 ./test.sh "-i -n file.txt test.txt test2.txt"
@@ -150,7 +150,7 @@
 ./test.sh "-v -v file.txt test.txt test2.txt"
 ./test.sh "-v -c file.txt test.txt test2.txt"
 ./test.sh "-v -l file.txt test.txt test2.txt"
-# ./test.sh "-v -o file.txt test.txt test2.txt"
+./test.sh "-v -o file.txt test.txt test2.txt"
 ./test.sh "-v -s file.txt test.txt test2.txt"
 ./test.sh "-v -h file.txt test.txt test2.txt"
 ./test.sh "-v -n file.txt test.txt test2.txt"
@@ -158,7 +158,7 @@
 ./test.sh "-c -v file.txt test.txt test2.txt"
 ./test.sh "-c -c file.txt test.txt test2.txt"
 ./test.sh "-c -l file.txt test.txt test2.txt"
-# ./test.sh "-c -o file.txt test.txt test2.txt"
+./test.sh "-c -o file.txt test.txt test2.txt"
 ./test.sh "-c -s file.txt test.txt test2.txt"
 ./test.sh "-c -h file.txt test.txt test2.txt"
 ./test.sh "-c -n file.txt test.txt test2.txt"
@@ -166,93 +166,52 @@
 ./test.sh "-l -v file.txt test.txt test2.txt"
 ./test.sh "-l -c file.txt test.txt test2.txt"
 ./test.sh "-l -l file.txt test.txt test2.txt"
-# ./test.sh "-l -o file.txt test.txt test2.txt"
+./test.sh "-l -o file.txt test.txt test2.txt"
 ./test.sh "-l -s file.txt test.txt test2.txt"
 ./test.sh "-l -h file.txt test.txt test2.txt"
 ./test.sh "-l -n file.txt test.txt test2.txt"
-# ./test.sh "-o -i file.txt test.txt test2.txt"
-# ./test.sh "-o -v file.txt test.txt test2.txt"
-# ./test.sh "-o -c file.txt test.txt test2.txt"
-# ./test.sh "-o -l file.txt test.txt test2.txt"
-# ./test.sh "-o -o file.txt test.txt test2.txt"
-
-# ./test.sh "-o -s file.txt test.txt test2.txt"
-
-# ./test.sh "-o -h file.txt test.txt test2.txt"
-
-# ./test.sh "-o -n file.txt test.txt test2.txt"
-
+./test.sh "-o -i file.txt test.txt test2.txt"
+./test.sh "-o -v file.txt test.txt test2.txt"
+./test.sh "-o -c file.txt test.txt test2.txt"
+./test.sh "-o -l file.txt test.txt test2.txt"
+./test.sh "-o -o file.txt test.txt test2.txt"
+./test.sh "-o -s file.txt test.txt test2.txt"
+./test.sh "-o -h file.txt test.txt test2.txt"
+./test.sh "-o -n file.txt test.txt test2.txt"
 ./test.sh "-s -i file.txt test.txt test2.txt"
-
 ./test.sh "-s -v file.txt test.txt test2.txt"
-
 ./test.sh "-s -c file.txt test.txt test2.txt"
-
 ./test.sh "-s -l file.txt test.txt test2.txt"
-
-# ./test.sh "-s -o file.txt test.txt test2.txt"
-
+./test.sh "-s -o file.txt test.txt test2.txt"
 ./test.sh "-s -s file.txt test.txt test2.txt"
-
 ./test.sh "-s -h file.txt test.txt test2.txt"
-
 ./test.sh "-s -n file.txt test.txt test2.txt"
-
 ./test.sh "-h -i file.txt test.txt test2.txt"
-
 ./test.sh "-h -v file.txt test.txt test2.txt"
-
 ./test.sh "-h -c file.txt test.txt test2.txt"
-
 ./test.sh "-h -l file.txt test.txt test2.txt"
-
-# ./test.sh "-h -o file.txt test.txt test2.txt"
-
+./test.sh "-h -o file.txt test.txt test2.txt"
 ./test.sh "-h -s file.txt test.txt test2.txt"
-
 ./test.sh "-h -h file.txt test.txt test2.txt"
-
 ./test.sh "-h -n file.txt test.txt test2.txt"
-
 ./test.sh "-n -i file.txt test.txt test2.txt"
-
 ./test.sh "-n -v file.txt test.txt test2.txt"
-
 ./test.sh "-n -c file.txt test.txt test2.txt"
-
 ./test.sh "-n -l file.txt test.txt test2.txt"
-
-# ./test.sh "-n -o file.txt test.txt test2.txt"
-
+./test.sh "-n -o file.txt test.txt test2.txt"
 ./test.sh "-n -s file.txt test.txt test2.txt"
-
 ./test.sh "-n -h file.txt test.txt test2.txt"
-
 ./test.sh "-n -n file.txt test.txt test2.txt"
-
 ./test.sh "-i -e Hello file.txt test.txt test2.txt"
-
 ./test.sh "-v -e Hello file.txt test.txt test2.txt"
-
 ./test.sh "-c -e Hello file.txt test.txt test2.txt"
-
 ./test.sh "-l -e Hello file.txt test.txt test2.txt"
-
-# ./test.sh "-o -e Hello file.txt test.txt test2.txt"
-
+./test.sh "-o -e Hello file.txt test.txt test2.txt"
 ./test.sh "-s -e Hello file.txt test.txt test2.txt"
-
 ./test.sh "-h -e Hello file.txt test.txt test2.txt"
-
 ./test.sh "-n -e Hello file.txt test.txt test2.txt"
-
 ./test.sh "-i -f file.txt test.txt test2.txt"
-
 ./test.sh "-v -f file.txt test.txt test2.txt"
-
 ./test.sh "-c -f file.txt test.txt test2.txt"
-
 ./test.sh "-l -f file.txt test.txt test2.txt"
-
-# ./test.sh "-o -f file.txt test.txt test2.txt"
-
+./test.sh "-o -f file.txt test.txt test2.txt"
